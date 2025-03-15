@@ -18,7 +18,6 @@ int main(int argc, char *argv[]) {
         perror("stat failed");
         return 1;
     }
-
     printf("File Type: ");
     if (S_ISREG(status.st_mode)) 
     printf("Regular File\n");

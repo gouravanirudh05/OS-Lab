@@ -1,21 +1,32 @@
-/* 
-Program Number: 10
-Student Name: Gourav Anirudh B J; Register Number: IMT2023005 
-Date: 15/02/2025  
-Description: This program opens a file, writes 10 bytes, moves the file pointer, and writes another 10 bytes. 
-*/ 
 #include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 int main() {
-    FILE *file = fopen("seekfile.txt", "w+");
-    if (file == NULL) {
+    int fd = open("seekfile.txt", O_RDWR | O_CREAT, 0777);
+    if (fd == -1) {
         perror("Error opening file");
         return 1;
     }
-    fprintf(file, "ABCDEFGHIJ");
-    fseek(file, 10, SEEK_CUR);
-    fprintf(file, "1234567890");
-    fclose(file);
+    if (write(fd, "ABCDEFGHIJ", 10) != 10) {
+        perror("Error writing to file");
+        close(fd);
+        return 1;
+    }
+    int offset = lseek(fd, 10, SEEK_CUR);
+    if (offset == -1) {
+        perror("Error using lseek");
+        close(fd);
+        return 1;
+    }
+    printf("File pointer moved to position: %d\n", offset);
+    if (write(fd, "1234567890", 10) != 10) {
+        perror("Error writing to file");
+        close(fd);
+        return 1;
+    }
+    close(fd);
+    printf("File written successfully. Use `od -c seekfile.txt` to see the gaps.\n");
     return 0;
 }
