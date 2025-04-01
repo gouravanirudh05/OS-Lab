@@ -7,7 +7,9 @@ Description: This program creates a file, writes some content to it, and then re
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
+int main() 
+{
+    
     FILE *file = fopen("file_8.txt", "w");
     if (file == NULL) {
         perror("Error creating file");

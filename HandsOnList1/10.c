@@ -1,8 +1,15 @@
+/* 
+Program Number: 10
+Student Name: Gourav Anirudh B J; Register Number: IMT2023005 
+Date: 15/02/2025  
+Description: This program  opens a file in read-write mode, write 
+10 bytes, move the file pointer by 10 bytes using lseek, and then write another 10 
+bytes
+*/ 
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
-
 int main() {
     int fd = open("seekfile.txt", O_RDWR | O_CREAT, 0777);
     if (fd == -1) {

@@ -13,21 +13,15 @@ Experiment with the O_EXCL flag.
 
 int main()
 {
-    FILE *fp=fopen("file_4.txt","w+");
-    if(fp==NULL)
-    {
-        printf("File not created\n");
+    char filename[] = "file_4.txt";
+    int fd = open(filename, O_RDWR | O_CREAT | O_EXCL, 0644);
+    
+    if (fd == -1) {
+        perror("open");
         return 1;
     }
-    fprintf(fp,"This is file_4.txt\n");
-    fclose(fp);
-        char filename[] = "file_4.txt";
-        int fd = open(filename, O_RDWR | O_EXCL);
-        if (fd == -1) {
-            perror("open");
-            return 1;
-        }
-        printf("File %s opened successfully with fd = %d\n", filename, fd);
-        return 0;
-
+    
+    printf("File %s opened successfully with fd = %d\n", filename, fd);
+    close(fd);  // Close the file descriptor
+    return 0;
 }

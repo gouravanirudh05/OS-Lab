@@ -11,7 +11,7 @@ Description: This program creates a FIFO file using mkfifo system call.
 
 int main() 
 {
-    const char *fifo_path = "fifo"; 
+    char *fifo_path = "fifo"; 
     // Creating FIFO using mkfifo
     if (mkfifo(fifo_path,0744) == -1)  
     {

@@ -10,7 +10,7 @@ sleeping, and stopped states. The parent process monitors the child.
 #include <unistd.h>  
 #include <signal.h>  
 int main() {  
-    pid_t pid = fork();  
+    int pid = fork();  
     if (pid < 0) {  
         perror("Fork failed");  
         return 1;  

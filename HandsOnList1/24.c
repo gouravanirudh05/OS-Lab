@@ -12,12 +12,28 @@ waitpid system call.
 #include <sys/types.h>  
 #include <stdlib.h>
 int main() {
-    int pid1 = fork();
-    int pid2 = fork();
-    int pid3 = fork();
-    if (pid1 > 0) {
-        waitpid(pid1, NULL, 0);
-        printf("Parent waited for child %d\n", pid1);
+
+    int i,j,k;
+    if(!(i=fork()))
+    {
+        sleep(1);
     }
-    return 0;
+    else 
+    {
+        if((!(j=fork())))
+        {
+            sleep(3);
+        }
+        else 
+        {
+            if(!(k=fork()))
+            {
+                sleep(10);
+            }
+            else 
+            {
+                waitpid(k,NULL,0);
+            }
+        }
+    }
 }

@@ -2,7 +2,7 @@
 Program Number: 16a
 Student Name: Gourav Anirudh B J; Register Number: IMT2023005 
 Date: 21/02/2025  
-Description: Implements a write lock using fcntl. 
+Description: Implements a mandatory write lock using fcntl. 
 */
 #include <stdio.h>
 #include <fcntl.h>
@@ -22,17 +22,16 @@ int main() {
     lock.l_start = 0;
     lock.l_len = 0;  // Lock entire file
 
-    printf("Trying to acquire write lock...\n");
+    printf("Trying to do write lock\n");
     if (fcntl(fd, F_SETLKW, &lock) == -1) {
         perror("Error acquiring write lock");
         close(fd);
         return 1;
     }
-    printf("Write lock acquired! Writing to file...\n");
+    printf("Write lock acquired.Writing to file.\n");
 
     write(fd, "Write lock applied\n", 19);
-    sleep(10); // Keep lock for demonstration
-
+    sleep(10); // Keeping lock for demonstration
     lock.l_type = F_UNLCK;
     fcntl(fd, F_SETLK, &lock);
     printf("Write lock released.\n");

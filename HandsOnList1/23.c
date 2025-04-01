@@ -10,7 +10,7 @@ Description: This program creates an orphan process and shows that its parent is
 #include <sys/types.h>  
 #include <stdlib.h>
 int main() {
-    pid_t pid = fork();
+    int pid = fork();
     if (pid > 0) {  
         printf("Parent (PID: %d) created child (PID: %d).\n", getpid(), pid);
         printf("Parent exiting, leaving orphan child...\n");
@@ -20,6 +20,5 @@ int main() {
         sleep(5);  
         printf("Orphan child (PID: %d) now has new parent (PID: %d).\n", getpid(), getppid());
     }
-
     return 0;
 }
