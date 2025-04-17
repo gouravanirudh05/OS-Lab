@@ -1,5 +1,5 @@
 /* 
-Program Number: 1 
+Program Number: 1b 
 Student Name: Gourav Anirudh B J; Register Number: IMT2023005 
 Date:15/02/2025  
 Description: This program creates a hard link using the link system call. 

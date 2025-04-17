@@ -13,7 +13,7 @@ int main() {
 	char arr[][100]={"file1.txt","file2.txt","file3.txt","file4.txt","file5.txt"};
 	while(1){
 		if(count<5) {
-            int fd = creat(arr[count++],O_CREAT); 
+            creat(arr[count++],O_CREAT); 
         }
 	}
     return 0;

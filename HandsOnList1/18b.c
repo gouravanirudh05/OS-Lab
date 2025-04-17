@@ -2,7 +2,7 @@
 Program Number: 18b  
 Student Name: Gourav Anirudh B J; Register Number: IMT2023005  
 Date: 31/03/2025  
-Description: Simple read lock implementation  
+Description: record based  read lock implementation  
 */  
 
 #include <stdio.h>

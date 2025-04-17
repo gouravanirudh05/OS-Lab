@@ -2,7 +2,7 @@
 Program Number: 18a  
 Student Name: Gourav Anirudh B J; Register Number: IMT2023005  
 Date: 31/03/2025  
-Description: Simple write lock implementation  
+Description: record based write lock implementation  
 */  
 
 #include <stdio.h>

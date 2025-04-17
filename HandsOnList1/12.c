@@ -14,7 +14,6 @@ int main() {
         perror("Error opening file");
         return 1;
     }
-
     int flags = fcntl(fd, F_GETFL);
     if (flags == -1) {
         perror("fcntl failed");

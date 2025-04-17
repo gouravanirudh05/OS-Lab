@@ -20,10 +20,10 @@ int main() {
 
     printf("Waiting for input... (10 seconds timeout)\n");
     
-    int retval = select(STDIN_FILENO + 1, &readfds, NULL, NULL, &timeout);
-    if (retval == -1) {
+    int result = select(STDIN_FILENO + 1, &readfds, NULL, NULL, &timeout);
+    if (result == -1) {
         perror("select() failed");
-    } else if (retval) {
+    } else if (result) {
         printf("Data available! Reading input:\n");
         char buffer[100];
         read(STDIN_FILENO, buffer, sizeof(buffer));

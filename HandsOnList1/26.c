@@ -33,7 +33,7 @@ void run_execvp()
 
 void test_exec(const char *name, void (*exec_func)())
 {
-    pid_t pid = fork();
+    int pid = fork();
     if (pid == 0)
     { 
         // Child process

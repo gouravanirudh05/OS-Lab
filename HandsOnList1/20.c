@@ -9,10 +9,10 @@ Description: This program prints the parent and child process IDs using fork.
 #include <unistd.h>  
 
 int main() {  
-    pid_t pid = fork();  
+    int pid = fork();  
     if (pid == 0)  
-        printf("Child Process: PID = %d, Parent PID = %d\n", getpid(), getppid());  
+        printf("Child Process: PID = %d\n", getpid());  
     else  
-        printf("Parent Process: PID = %d, Child PID = %d\n", getpid(), pid);  
+        printf("Parent Process: PID = %d\n",getpid());  
     return 0;  
 }

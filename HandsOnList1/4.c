@@ -14,13 +14,11 @@ Experiment with the O_EXCL flag.
 int main()
 {
     char filename[] = "file_4.txt";
-    int fd = open(filename, O_RDWR | O_CREAT | O_EXCL, 0644);
-    
+    int fd = open(filename, O_RDWR | O_CREAT | O_EXCL, 0777);
     if (fd == -1) {
         perror("open");
         return 1;
     }
-    
     printf("File %s opened successfully with fd = %d\n", filename, fd);
     close(fd);  // Close the file descriptor
     return 0;

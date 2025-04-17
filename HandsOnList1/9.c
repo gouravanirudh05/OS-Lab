@@ -9,6 +9,7 @@ Description: This program prints various details about a given file.
 #include <time.h>
 
 int main() {
+
     FILE *file = fopen("file_9.txt", "w");
     if (file == NULL) {
         perror("Error creating file");
@@ -22,15 +23,28 @@ int main() {
         perror("stat");
         return 1;
     }
-    printf("a)Inode: %ld\n", fileStat.st_ino);
-    printf("b)Number of Hard Links: %ld\n", fileStat.st_nlink);
-    printf("c)UID: %d\n", fileStat.st_uid);
-    printf("d)GID: %d\n", fileStat.st_gid);
-    printf("e)Size: %ld bytes\n", fileStat.st_size);
-    printf("f)Block Size: %ld\n", fileStat.st_blksize);
-    printf("g)Number of Blocks: %ld\n", fileStat.st_blocks);
-    printf("h)Last Access Time: %s", ctime(&fileStat.st_atime));
-    printf("i)Last Modification Time: %s", ctime(&fileStat.st_mtime));
-    printf("j)Last Change Time: %s", ctime(&fileStat.st_ctime));
+    printf(
+        "a) Inode: %ld\n"
+        "b) Number of Hard Links: %ld\n"
+        "c) UID: %d\n"
+        "d) GID: %d\n"
+        "e) Size: %ld bytes\n"
+        "f) Block Size: %ld\n"
+        "g) Number of Blocks: %ld\n"
+        "h) Last Access Time: %s"
+        "i) Last Modification Time: %s"
+        "j) Last Change Time: %s",
+        fileStat.st_ino,
+        fileStat.st_nlink,
+        fileStat.st_uid,
+        fileStat.st_gid,
+        fileStat.st_size,
+        fileStat.st_blksize,
+        fileStat.st_blocks,
+        ctime(&fileStat.st_atime),
+        ctime(&fileStat.st_mtime),
+        ctime(&fileStat.st_ctime)
+    );
+    
     return 0;
 }

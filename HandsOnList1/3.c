@@ -10,8 +10,8 @@ prints its file descriptor value using the creat() system call.
 int main() {
     // Hardcoded filename
     char filename[] = "output.txt";
-    // Create the file with read and write permissions for all users
-    int fd = creat(filename, 0666);
+    // Create the file with read,write and execute permissions for all users
+    int fd = creat(filename, 0777);
     if (fd == -1) {
         perror("create failed");
         return 1;
