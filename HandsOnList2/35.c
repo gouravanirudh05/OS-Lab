@@ -1,4 +1,4 @@
-/*    Program Number: 34c
+/*    Program Number: 35
 Student Name: Gourav Anirudh; Register Number: IMT2023005
 Date:14/04/2025
 Description:This is a program to find out total number of directories on the pwd executing ls -l | grep ^d | wc  using only dup2.
