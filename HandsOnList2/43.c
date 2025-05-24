@@ -1,40 +1,27 @@
-/*  
-    Program Number: 43  
-    Student Name: Gourav Anirudh; Register Number: IMT2023005  
-    Date: 18/04/2025  
-    Description: This program sends a message to an existing message queue.  
+/*    Program Number: 43
+Student Name: Gourav Anirudh; Register Number: IMT2023005
+Date:11/05/2025
+Description: This is a program to send messages to the message queue
 */
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/msg.h>
 #include <sys/ipc.h>
 #include <sys/types.h>
-#define MAX_TEXT 100
-struct message {
-    long mtype;
-    char mtext[MAX_TEXT];
-};
-int main() {
-    int key;
+struct msgbuf
+{
+    long int mtype;
+    char mtext[100];
+} mq;
+int main()
+{
     int msgid;
-    struct message msg;
+    key_t key;
     key = ftok(".", 'm');
-    if (key == -1) {
-        perror("ftok error");
-        return 1;
-    }
     msgid = msgget(key, 0);
-    if (msgid == -1) {
-        perror("msgget error");
-        return 1;
-    }
-    msg.mtype = 10;
-    printf("Enter message to send: ");
-    fgets(msg.mtext, MAX_TEXT, stdin);
-    if (msgsnd(msgid, &msg, sizeof(msg.mtext), 0) == -1) {
-        perror("msgsnd error");
-        return 1;
-    }
+    mq.mtype = 10;
+    fgets(mq.mtext, 100, stdin);
+    msgsnd(msgid, &mq, sizeof(mq), 0);
     execlp("ipcs", "ipcs", "-q", NULL);
     return 0;
 }

@@ -21,16 +21,18 @@ int main(){
     fflush(stdout);
 
     FD_ZERO(&readfds);
-    FD_SET(fd, &readfds);
+    FD_SET(0, &readfds); // stdin instead of fd
     t.tv_sec = 10;
     t.tv_usec = 0;
 
-    if(!select(fd+1, &readfds, NULL, NULL, &t)){
+    if (!select(1, &readfds, NULL, NULL, &t))
+    {
         printf("User didn't enter anything!\n");
     }
-    else{
+    else
+    {
         fgets(msg, msg_size, stdin);
-        write(fd,msg,msg_size);
+        write(fd, msg, msg_size);
     }
     return (0);
 }
